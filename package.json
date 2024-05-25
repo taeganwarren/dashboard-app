@@ -4,14 +4,15 @@
   "type": "module",
   "scripts": {
     "start": "",
-    "debug": "node --env-file=.env ./bin/main.js",
-    "dev": "nodemon --env-file=.env ./bin/main.js",
+    "debug": "node --env-file=.env ./bin/www",
+    "dev": "nodemon --env-file=.env ./bin/www",
     "tailwind": "npx tailwindcss -i ./public/stylesheets/style.css -o ./public/stylesheets/tailwind.css --watch"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "helmet": "^7.1.0",
     "http-errors": "~1.6.3",
     "mongoose": "^8.4.0",
     "morgan": "^1.10.0",

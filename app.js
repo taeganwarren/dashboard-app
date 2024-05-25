@@ -5,7 +5,8 @@ import path from 'path';
 import url from 'url';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import indexRouter from './routes/index.js';
+import helmet from "helmet";
+import indexRouter from './routes/routes.js';
 
 // Constants
 const app = express();
@@ -20,6 +21,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
