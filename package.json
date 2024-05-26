@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "",
-    "debug": "node --env-file=.env.debug ./bin/www",
-    "dev": "nodemon --env-file=.env.development ./bin/www",
+    "debug": "node --env-file=.env.debug ./bin/server.js",
+    "dev": "nodemon --env-file=.env.development ./bin/server.js",
     "tailwind": "npx tailwindcss -i ./public/stylesheets/style.css -o ./public/stylesheets/tailwind.css"
   },
   "dependencies": {

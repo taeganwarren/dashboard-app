@@ -1,0 +1,26 @@
+version: "3"
+services:
+  mongo:
+    image: mongo:latest
+    networks:
+      - dashboard-app
+    volumes:
+      - mongo-data:/data/db
+  app:
+    image: dashboard-app
+    ports: 
+      - 5000:5000
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGO_CONNECTION_STRING=mongodb://mongo:27017/dashboard_app
+    networks:
+      - dashboard-app
+    depends_on:
+      - mongo
+networks:
+  dashboard-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
