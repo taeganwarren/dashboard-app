@@ -4,11 +4,12 @@
   "type": "module",
   "scripts": {
     "start": "",
-    "debug": "node --env-file=.env ./bin/www",
-    "dev": "nodemon --env-file=.env ./bin/www",
-    "tailwind": "npx tailwindcss -i ./public/stylesheets/style.css -o ./public/stylesheets/tailwind.css --watch"
+    "debug": "node --env-file=.env.debug ./bin/www",
+    "dev": "nodemon --env-file=.env.development ./bin/www",
+    "tailwind": "npx tailwindcss -i ./public/stylesheets/style.css -o ./public/stylesheets/tailwind.css"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.7",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",

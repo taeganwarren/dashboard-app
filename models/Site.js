@@ -3,7 +3,7 @@ import { Schema, model } from 'mongoose';
 
 // Site schema
 const SiteSchema = new Schema({
-    name: {
+    title: {
         type: String,
         required: true
     },
