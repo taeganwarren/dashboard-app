@@ -11,6 +11,16 @@ async function getSites(req, res, next) {
     }
 }
 
+// Get a site
+async function getSite(req, res, next) {
+    try {
+        const site = await Site.findById(req.params.id);
+        return site;
+    } catch (err) {
+        next(err);
+    }
+}
+
 // Create a site
 async function createSite(req, res, next) {
     try {
@@ -22,8 +32,33 @@ async function createSite(req, res, next) {
     }
 }
 
+// Update a site
+async function updateSite(req, res, next) {
+    try {
+        const site = await Site.findByIdAndUpdate(req.params.id);
+        site.set(req.body);
+        await site.save();
+        return site;
+    }
+    catch (err) {
+        next(err);
+    }
+}
+
+// Delete a site
+async function deleteSite(req, res, next) {
+    try {
+        await Site.findByIdAndDelete(req.params.id);
+    } catch (err) {
+        next(err);
+    }
+}
+
 // Exports
 export {
     getSites,
-    createSite
+    getSite,
+    createSite,
+    updateSite,
+    deleteSite
 }

@@ -1,6 +1,6 @@
 // Imports
 import express from 'express';
-import { getSites, createSite } from '../controllers/siteController.js';
+import { getSites, getSite, createSite, updateSite, deleteSite } from '../controllers/siteController.js';
 
 // Constants
 const router = express.Router();
@@ -22,14 +22,22 @@ router.post('/submit', async (req, res, next) => {
 	res.redirect('/');
 });
 
-// PUT /update route
-router.put('/update', (req, res) => {
-	res.send('Update site');
+// GET /update route
+router.get('/edit/:id', async (req, res, next) => {
+	const data = await getSite(req, res, next);
+	res.render('edit', { data: data });
+});
+
+// POST /update route
+router.post('/edit/:id', async (req, res, next) => {
+	await updateSite(req, res, next);
+	res.redirect('/');
 });
 
 // DELETE /delete route
-router.delete('/delete', (req, res) => {
-	res.send('Delete site');
+router.delete('/delete/:id', async (req, res, next) => {
+	await deleteSite(req, res, next);
+	res.send();
 });
 
 // Exports
