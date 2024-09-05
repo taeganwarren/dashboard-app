@@ -1,5 +1,6 @@
 // Imports
 import Site from '../models/Site.js';
+import Archive from '../models/Archive.js';
 
 // Get all sites
 async function getSites(req, res, next) {
@@ -32,6 +33,17 @@ async function createSite(req, res, next) {
     }
 }
 
+// Archive a site
+async function archiveSite(req, res, next) {
+    try {
+        const archive = new Archive(req.body);
+        await archive.save();
+        return archive;
+    } catch (err) {
+        next(err);
+    }
+}
+
 // Update a site
 async function updateSite(req, res, next) {
     try {
@@ -59,6 +71,7 @@ export {
     getSites,
     getSite,
     createSite,
+    archiveSite,
     updateSite,
     deleteSite
 }
