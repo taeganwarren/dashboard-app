@@ -12,6 +12,18 @@ async function getSites(req, res, next) {
     }
 }
 
+// Get all archives
+async function getArchives(req, res, next) {
+    try {
+        const archives = await Archive.find();
+        console.log('test');
+        console.log(archives);
+        return archives;
+    } catch (err) {
+        next(err);
+    }
+}
+
 // Get a site
 async function getSite(req, res, next) {
     try {
@@ -69,6 +81,7 @@ async function deleteSite(req, res, next) {
 // Exports
 export {
     getSites,
+    getArchives,
     getSite,
     createSite,
     archiveSite,
