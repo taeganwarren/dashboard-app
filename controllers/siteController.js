@@ -16,8 +16,6 @@ async function getSites(req, res, next) {
 async function getArchives(req, res, next) {
     try {
         const archives = await Archive.find();
-        console.log('test');
-        console.log(archives);
         return archives;
     } catch (err) {
         next(err);
