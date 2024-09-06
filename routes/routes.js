@@ -1,6 +1,6 @@
 // Imports
 import express from 'express';
-import { getSites, getArchives, getSite, createSite, archiveSite, updateSite, deleteSite } from '../controllers/siteController.js';
+import { getSites, getSite, createSite, updateSite, deleteSite } from '../controllers/siteController.js';
 
 // Constants
 const router = express.Router();
@@ -22,21 +22,10 @@ router.post('/submit', async (req, res, next) => {
 	res.redirect('/');
 });
 
-// GET /archive route
-router.get('/archive', (req, res) => {
-	res.render('archive');
-});
-
-// POST /archive route
-router.post('/archive', async (req, res, next) => {
-	await archiveSite(req, res, next);
-	res.redirect('/');
-});
-
 // GET /sites route
-router.get('/sites', async (req, res, next) => {
-	const data = await getArchives(req, res, next);
-	res.render('sites', { data: data });
+router.get('/archive', async (req, res, next) => {
+	const data = await getSites(req, res, next);
+	res.render('archive', { data: data });
 });
 
 // GET /update route
