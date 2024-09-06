@@ -35,8 +35,11 @@ async function createSite(req, res, next) {
 // Update a site
 async function updateSite(req, res, next) {
     try {
-        console.log(req.params);
-        console.log(req.body);
+        if (req.body.pinned) {
+            req.body.pinned = true;
+        } else {
+            req.body.pinned = false;
+        }
         const site = await Site.findByIdAndUpdate(req.params.id);
         site.set(req.body);
         await site.save();

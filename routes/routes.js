@@ -8,7 +8,8 @@ const router = express.Router();
 // GET / route
 router.get('/', async (req, res, next) => {
 	const data = await getSites(req, res, next);
-	res.render('index', { data: data });
+	const filteredData = data.filter(item => item.pinned);
+	res.render('index', { data: filteredData });
 });
 
 // GET /submit route

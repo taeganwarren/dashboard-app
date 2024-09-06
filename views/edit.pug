@@ -13,11 +13,12 @@ block content
             label(for="text" class="block text-sm font-medium leading-6 text-gray-900") URL
             div(class="mt-2")
               input(id="text" name="url" type="text" autocomplete="text" value=`${data.url}` required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6")
-          div(class="flex items-center")
-            button(type="button" class="bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2" role="switch" aria-checked="false" aria-labelledby="pinned-label" aria-pressed="false")
-              span(aria-hidden="true" class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out")
-            span(class="ml-3 text-sm" id="annual-billing-label")
-              span(class="font-medium text-gray-900") Pin to homepage
+          div
+            label(for="text" class="block text-sm font-medium leading-6 text-gray-900") Pin to homepage
+            if data.pinned
+              input(id="pinnedToggle" type="checkbox" name="pinned" value="pinned" checked)
+            else
+              input(id="pinnedToggle" type="checkbox" name="pinned" value="pinned")
           div
             button(type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600") Edit site
             button(id="deleteButton" type="button" class="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 mt-2") Delete site
