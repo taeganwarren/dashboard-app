@@ -8,7 +8,8 @@ const router = express.Router();
 // GET / route
 router.get('/', async (req, res, next) => {
 	const data = await getSites(req, res, next);
-	res.render('index', { data: data });
+	const filteredData = data.filter(item => item.pinned);
+	res.render('index', { data: filteredData });
 });
 
 // GET /submit route
@@ -20,6 +21,12 @@ router.get('/submit', (req, res) => {
 router.post('/submit', async (req, res, next) => {
 	await createSite(req, res, next);
 	res.redirect('/');
+});
+
+// GET /sites route
+router.get('/archive', async (req, res, next) => {
+	const data = await getSites(req, res, next);
+	res.render('archive', { data: data });
 });
 
 // GET /update route
