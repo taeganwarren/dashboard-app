@@ -10,6 +10,10 @@ const SiteSchema = new Schema({
     url: {
         type: String,
         required: true
+    },
+    pinned: {
+        type: Boolean,
+        default: false
     }
 });
 

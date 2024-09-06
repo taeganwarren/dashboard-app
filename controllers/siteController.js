@@ -35,6 +35,8 @@ async function createSite(req, res, next) {
 // Update a site
 async function updateSite(req, res, next) {
     try {
+        console.log(req.params);
+        console.log(req.body);
         const site = await Site.findByIdAndUpdate(req.params.id);
         site.set(req.body);
         await site.save();
