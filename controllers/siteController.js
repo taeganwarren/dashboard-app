@@ -24,6 +24,11 @@ async function getSite(req, res, next) {
 // Create a site
 async function createSite(req, res, next) {
     try {
+        if (req.body.pinned) {
+            req.body.pinned = true;
+        } else {
+            req.body.pinned = false;
+        }
         const site = new Site(req.body);
         await site.save();
         return site;
